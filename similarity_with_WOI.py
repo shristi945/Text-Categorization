@@ -1,6 +1,6 @@
 import spacy
 
-nlp = spacy.load('en_core_web_lg') # make sure to use larger model!
+nlp = spacy.load('en_core_web_md') # make sure to use larger model!
 
 def findSimilarWOI(token1, token2):
 
