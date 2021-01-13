@@ -13,8 +13,15 @@
 <body>
  <div class="login">
 	<h1>Predict Category</h1>
-
+     <h4>Enter Some Simple text to test.</h4>
+     <br>
+     <h4>Example: I am looking to buy car</h4>
+     <br>
+     <h4>Output will be something like this: {'sentence': 'i am looking to buy a car', 'token': 'car', 'WOI': 'car', 'similarity': 1.0}</h4>
+     <br>
+     <h5>Meaning the scentence token is matching with WOI (Word of Interest: Car)</h5>
      <!-- Main Input For Receiving Query to our ML -->
+
     <form action="{{ url_for('predict')}}"method="post">
     	<input type="text" name="text" placeholder="Some Simple Random Text" required="required" />
 
