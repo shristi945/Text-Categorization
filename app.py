@@ -8,7 +8,7 @@ nlp = spacy.load('en_core_web_sm')
 
 from subject_verb_object_extract import findSVOs
 from word_of_interest_extract import findWOI
-from check_if_negation_sentence import  check_negation_sentence
+from check_if_negation_sentence import check_negation_sentence
 
 @app.route('/')
 def home():
@@ -16,32 +16,27 @@ def home():
 
 @app.route('/predict',methods=['POST'])
 def predict():
-    # if request.method == 'POST':
-
-        # Input text goes here
 
     user_text_list = [str(x) for x in request.form.values()]
     user_text = ' '.join(user_text_list)
 
     # user_text = "i don't have a dog"
     tokens = nlp(user_text)
-    svos = findSVOs(tokens)
+    svos = str(findSVOs(tokens))
     negation_flag = False
 
-    # return str(svos)
+
     if check_negation_sentence(user_text) == True:
         negation_flag = True
 
-    prediction_list = findWOI(svos, user_text)
+    woi = str(findWOI(user_text, svos))
     if negation_flag:
-        result = prediction_list + "sentence is in negation"
+        result = woi + ' ' + "sentence is in negation"
     else:
-        result = prediction_list
+        result = woi
 
 
-    return render_template('index.html', prediction_text='Predicted Category : {}'.format(result))
-
-
+    return render_template('index.html', woi='sentence understanding with word of interest : {}'.format(result), svo='SVO triplet: {}'. format(svos))
 
 
 if __name__ == "__main__":
