@@ -1,3 +1,11 @@
+# Link to see the work hosted on Heroku 
+
+https://textcategorization-api.herokuapp.com/
+
+
+
+
+
 # Subject Verb Object extractor
 
 An improved version of an often quoted Internet resources for Subject/Verb/Object extraction using Spacy.
